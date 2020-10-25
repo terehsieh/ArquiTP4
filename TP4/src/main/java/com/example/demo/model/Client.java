@@ -22,7 +22,7 @@ public class Client {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idClient;
 	@Column(nullable = false)
-	private Integer dni;
+	private Long dni;
 	@Column
 	private String name;
 	@Column
@@ -47,7 +47,7 @@ public class Client {
 
 
 	
-	public Client(Integer dni, String name, String surname) {
+	public Client(Long dni, String name, String surname) {
 		super();
 		this.dni = dni;
 		this.name = name;
@@ -71,12 +71,12 @@ public class Client {
 		this.idClient = idClient;
 	}
 
-	public Integer getDni() {
+	public Long getDni() {
 		return dni;
 	}
 
-	public void setDni(Integer dni) {
-		this.dni = dni;
+	public void setDni(Long id) {
+		this.dni = id;
 	}
 
 	public String getName() {

@@ -22,7 +22,7 @@ public class Bill {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // unica
-	private int idBill;
+	private Integer idBill;
 	@Column
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "UTC")
 	private Date date;

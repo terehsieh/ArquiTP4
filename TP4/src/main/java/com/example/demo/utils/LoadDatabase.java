@@ -17,10 +17,9 @@ class LoadDatabase {
 //    private static final String log = null;
 //Carga de datos
 	@Bean
-    CommandLineRunner initDatabase(@Qualifier("personRepository") ClientRepository repository) {
+    CommandLineRunner initDatabase(@Qualifier("clientRepository") ClientRepository repository) {
         return args -> {
-            Log.info("Preloading " + repository.save(new Client((long) 1234,"Seba", "Perez")));
-            Log.info("Preloading " + repository.save(new Client((long) 2345, "Juan", "Dominguez")));
+            System.out.println("Preloading " + repository.save(new Client((long) 1234,"Seba", "Perez")));
         };
     }
 }
