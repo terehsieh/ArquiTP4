@@ -7,10 +7,16 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ClientRepository extends JpaRepository<Client, Long> {
+//SELECT
+	@Query("SELECT t FROM Client t where t.surname = :surname")
+	public List<Client> findAllBySurname(String surname);
 
-    @Query("SELECT t FROM Client t where t.surname = :surname")
-    public List<Client> findAllBySurname(String surname);
+	@Query("SELECT t FROM Client t where t.name = :name")
+	public List<Client> findAllByName(String name);
 
-    @Query("SELECT t FROM Client t where t.name = :name")
-    public List<Client> findAllByName(String name);
+//    Obtener todos los clientes
+	@Query("SELECT t FROM Client t ")
+	public List<Client> findAll();
+//    INSERT
+
 }

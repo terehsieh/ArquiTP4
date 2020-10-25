@@ -21,7 +21,7 @@ public abstract class ClientControllerCrud {
     }
 
     @PostMapping("/persons")
-    public Client newClient(@RequestBody Client p) {
+    public Client newPerson(@RequestBody Client p) {
         return clientCrud.save(p);
     }
 

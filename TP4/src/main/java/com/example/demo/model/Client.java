@@ -2,54 +2,80 @@ package com.example.demo.model;
 
 import lombok.Data;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
 public class Client {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idClient;
 	@Column(nullable = false)
-	private Long dni;
+	private Integer dni;
 	@Column
 	private String name;
 	@Column
 	private String surname;
-	@ManyToOne
-	private Address address;
+//	@ManyToOne
+//	private Address address;
 
 	public Client() {
+		super();
 	}
 
-	public Client(Long dni, String name, String surname, Address address) {
-		this.dni = dni;
-		this.name = name;
-		this.surname = surname;
-	}
 
-	public Client(Long dni, String name, String surname) {
+
+//	public Client(int idClient, Integer dni, String name, String surname, Address address) {
+//		super();
+//		this.idClient = idClient;
+//		this.dni = dni;
+//		this.name = name;
+//		this.surname = surname;
+//		this.address = address;
+//	}
+
+
+	
+	public Client(Integer dni, String name, String surname) {
 		super();
 		this.dni = dni;
 		this.name = name;
 		this.surname = surname;
 	}
 
+//FUNCIONES
+	@OneToMany(mappedBy="client")
+	@JsonIgnore
+	private List<Bill> compra;
+	
+	
+	
+//	GETTERS AND SETTERS
+	
 	public int getIdClient() {
 		return idClient;
 	}
 
-	public Long getDni() {
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
+	}
+
+	public Integer getDni() {
 		return dni;
 	}
 
-	public void setDni(Long dni) {
+	public void setDni(Integer dni) {
 		this.dni = dni;
 	}
 
@@ -69,11 +95,11 @@ public class Client {
 		this.surname = surname;
 	}
 
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+//	public Address getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(Address address) {
+//		this.address = address;
+//	}
 }
